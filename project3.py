@@ -1,8 +1,38 @@
 #opening file
 from prettytable import PrettyTable
-import datetime 
-date= datetime.datetime.now()
-ged_file=open(r'Family-2-9-Sep-2018-247.ged')
+import time
+def FormatDate(date):
+    def monthToNum(month):
+        numbers = {
+            "JAN": "01",
+            "FEB": "02",
+            "MAR": "03",
+            "APR": "04",
+            "MAY": "05",
+            "JUN": "06",
+            "JUL": "07",
+            "AUG": "08",
+            "SEP": "09",
+            "OCT": "10",
+            "NOV": "11",
+            "DEC": "12",
+        }
+        return numbers.get(month, None)
+    if date != "NA":
+        date_list = date.split(' ')
+        return date_list[2] + '-' + monthToNum(date_list[1]) + '-' + date_list[0].zfill(2)
+    else:
+        return "NA"
+
+def computeAge(Fdate):
+    timeList = Fdate.split('-')
+    currentTimeList = time.strftime('%Y-%m-%d', time.localtime(time.time())).split('-')
+    tempAge = int(currentTimeList[0]) - int(timeList[0])
+    if int(currentTimeList[1]+ currentTimeList[2]) - int(timeList[1]+ timeList[2]) >= 0:
+        return tempAge
+    else:
+        return tempAge - 1
+ged_file=open(r'family.ged')
 class Person:
     ID = "NA"
     Name = ""
@@ -15,7 +45,7 @@ class Person:
     Spouse = "NA"
 
     def __init__(self, ID):
-        self.ID = ID.replace("@","")
+        self.ID = ID
 
 
 class Families:
@@ -28,7 +58,7 @@ class Families:
     WifeName = "NA"
     Children="NA"
     def __init__(self, ID):
-        self.ID = ID.replace("@","")
+        self.ID = ID
 
 birth = False
 death = False
@@ -83,7 +113,7 @@ for line in ged_file:
             if current_person.Spouse is "NA":
                 current_person.Spouse=argument
             else:
-                current_person.Spouse="{"+current_person.Spouse+","+argument+"}"
+                current_person.Spouse=current_person.Spouse+","+argument
         elif line_tag == 'FAMC':
             current_person.Child=argument
         elif line_tag == 'HUSB':
@@ -104,21 +134,16 @@ for line in ged_file:
             if current_family.Children is "NA":
                 current_family.Children=argument
             else:
-                current_family.Children="{"+current_family.Children+","+argument+"}"
+                current_family.Children=current_family.Children+","+argument
 
     elif line_level == '2':
         if line_tag == 'DATE':
             if birth:
                 current_person.Birthday = argument
-                person_age_Alive=current_person.Birthday.split(" ")
-                current_person.Age=date.year-int(person_age_Alive[2])
                 birth = False
             elif death:
                 current_person.Death = argument
                 current_person.Alive = False
-                person_age_Death=current_person.Death.split(" ")
-                print(person_age_Death[2])
-                current_person.Age=int(person_age_Death[2])-int(person_age_Alive[2])
                 death = False
             elif married:
                 current_family.Married = argument
@@ -127,17 +152,25 @@ for line in ged_file:
                 current_family.Divorced = argument
                 divorce = False
 
+
 individuals = PrettyTable()
 individuals.field_names = ["ID","Name","Gender","Birthday","Age","Alive","Death","Child","Spouse"]
 for people in listOfPeople:
-    individuals.add_row([people.ID, people.Name, people.Gender, people.Birthday, people.Age, people.Alive, people.Death, people.Child.replace("@",""), people.Spouse.replace("@","")])
+    # better output:
+    people.ID = people.ID.replace('@', '')
+    people.Birthday = FormatDate(people.Birthday)
+    people.Age = computeAge(people.Birthday)
+    people.Death = FormatDate(people.Death)
+    individuals.add_row([people.ID, people.Name, people.Gender, people.Birthday, people.Age, people.Alive, people.Death, people.Child.replace('@', ''), people.Spouse.replace('@', '')])
 
 print(individuals)
 
 families = PrettyTable()
 families.field_names = ["ID","Married","Divorced","Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
 for family in listOfFamilies:
-    families.add_row([family.ID, family.Married, family.Divorced, family.HusbandID.replace("@",""), family.HusbandName, family.WifeID.replace("@",""), family.WifeName, family.Children.replace("@","")])
+    family.ID = family.ID.replace('@', '')
+    family.Married = FormatDate(family.Married)
+    families.add_row([family.ID, family.Married, family.Divorced, family.HusbandID.replace('@', ''), family.HusbandName, family.WifeID.replace('@', ''), family.WifeName, family.Children.replace('@', '')])
 
 
 print(families)
