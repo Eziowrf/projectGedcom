@@ -3,6 +3,8 @@ from prettytable import PrettyTable
 import time
 from FormatDate import FormatDate
 from computeAge import computeAge
+from checkDeathvsBirth import checkDeathvsBirth
+from marriageAfter14 import marriageAfter14
 class Person:
     ID = "NA"
     Name = ""
@@ -144,9 +146,13 @@ families = PrettyTable()
 families.field_names = ["ID","Married","Divorced","Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
 for family in listOfFamilies:
     family.ID = family.ID.replace('@', '')
+    family.WifeID = family.WifeID.replace('@','')
+    family.HusbandID = family.HusbandID.replace('@','')
     family.Married = FormatDate(family.Married)
     families.add_row([family.ID, family.Married, family.Divorced, family.HusbandID.replace('@', ''), family.HusbandName, family.WifeID.replace('@', ''), family.WifeName, family.Children.replace('@', '')])
 
 
 print(families)
 
+checkDeathvsBirth(listOfFamilies, listOfPeople)
+marriageAfter14(listOfFamilies, listOfPeople)
