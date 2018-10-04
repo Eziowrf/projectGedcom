@@ -3,7 +3,6 @@ from prettytable import PrettyTable
 import time
 from FormatDate import FormatDate
 from computeAge import computeAge
-ged_file=open(r'family.ged')
 class Person:
     ID = "NA"
     Name = ""
@@ -31,99 +30,104 @@ class Families:
     def __init__(self, ID):
         self.ID = ID
 
-birth = False
-death = False
-divorce = False
-married = False
-listOfPeople = []
-listOfFamilies = []
-current_family = []
-current_person = []
-count = 0
-    
-for line in ged_file:
-    # split the line into words
-    line_words = line.split()
-    # get the second element since that is the tag of line
-    line_tag = line_words[1].strip()
-    # get the first element to indicate the level
-    line_level = line_words[0].strip()
+def gedComParse(filename):
 
-    # get the third element in case of INDI or FAM tags
-    if len(line_words)> 2:
-        special_tag = line_words[2].strip()
-    else:
-        special_tag = "FALSE"
+    ged_file=open(filename,'r')
+
+
+    birth = False
+    death = False
+    divorce = False
+    married = False
+    listOfPeople = []
+    listOfFamilies = []
+    current_family = []
+    current_person = []
         
+    for line in ged_file:
+        # split the line into words
+        line_words = line.split()
+        # get the second element since that is the tag of line
+        line_tag = line_words[1].strip()
+        # get the first element to indicate the level
+        line_level = line_words[0].strip()
 
-    arguments = []
-    for x in range(2, len(line_words)):
-        arguments.append(line_words[x].strip())
+        # get the third element in case of INDI or FAM tags
+        if len(line_words)> 2:
+            special_tag = line_words[2].strip()
+        else:
+            special_tag = "FALSE"
+            
 
-    argument = " ".join(arguments)
+        arguments = []
+        for x in range(2, len(line_words)):
+            arguments.append(line_words[x].strip())
 
-    # check for new people or family information
-    if line_level == '0':
-        if special_tag == 'INDI':
-            current_person = Person(line_tag)
-            listOfPeople.append(current_person)
-        elif special_tag == 'FAM':
-            current_family = Families(line_tag)
-            listOfFamilies.append(current_family)
+        argument = " ".join(arguments)
 
-    elif line_level == '1':
-        if line_tag == 'NAME':
-            current_person.Name = argument
-        elif line_tag == 'SEX':
-            current_person.Gender = argument
-        elif line_tag == 'BIRT':
-            birth = True
-        elif line_tag == 'DEAT':
-            death = True
-        elif line_tag == 'FAMS':
-            if current_person.Spouse is "NA":
-                current_person.Spouse=argument
-            else:
-                current_person.Spouse=current_person.Spouse+","+argument
-        elif line_tag == 'FAMC':
-            current_person.Child=argument
-        elif line_tag == 'HUSB':
-            current_family.HusbandID = argument
-            for person in listOfPeople:
-                if person.ID == argument:
-                    current_family.HusbandName = person.Name
-        elif line_tag == 'WIFE':
-            current_family.WifeID = argument
-            for person in listOfPeople:
-                if person.ID == argument:
-                    current_family.WifeName = person.Name
-        elif line_tag == 'MARR':
-            married = True
-        elif line_tag == 'DIV':
-            divorce = True
-        elif line_tag == 'CHIL':
-            if current_family.Children is "NA":
-                current_family.Children=argument
-            else:
-                current_family.Children=current_family.Children+","+argument
+        # check for new people or family information
+        if line_level == '0':
+            if special_tag == 'INDI':
+                current_person = Person(line_tag)
+                listOfPeople.append(current_person)
+            elif special_tag == 'FAM':
+                current_family = Families(line_tag)
+                listOfFamilies.append(current_family)
 
-    elif line_level == '2':
-        if line_tag == 'DATE':
-            if birth:
-                current_person.Birthday = argument
-                birth = False
-            elif death:
-                current_person.Death = argument
-                current_person.Alive = False
-                death = False
-            elif married:
-                current_family.Married = argument
-                married = False
-            elif divorce:
-                current_family.Divorced = argument
-                divorce = False
+        elif line_level == '1':
+            if line_tag == 'NAME':
+                current_person.Name = argument
+            elif line_tag == 'SEX':
+                current_person.Gender = argument
+            elif line_tag == 'BIRT':
+                birth = True
+            elif line_tag == 'DEAT':
+                death = True
+            elif line_tag == 'FAMS':
+                if current_person.Spouse is "NA":
+                    current_person.Spouse=argument
+                else:
+                    current_person.Spouse=current_person.Spouse+","+argument
+            elif line_tag == 'FAMC':
+                current_person.Child=argument
+            elif line_tag == 'HUSB':
+                current_family.HusbandID = argument
+                for person in listOfPeople:
+                    if person.ID == argument:
+                        current_family.HusbandName = person.Name
+            elif line_tag == 'WIFE':
+                current_family.WifeID = argument
+                for person in listOfPeople:
+                    if person.ID == argument:
+                        current_family.WifeName = person.Name
+            elif line_tag == 'MARR':
+                married = True
+            elif line_tag == 'DIV':
+                divorce = True
+            elif line_tag == 'CHIL':
+                if current_family.Children is "NA":
+                    current_family.Children=argument
+                else:
+                    current_family.Children=current_family.Children+","+argument
 
+        elif line_level == '2':
+            if line_tag == 'DATE':
+                if birth:
+                    current_person.Birthday = argument
+                    birth = False
+                elif death:
+                    current_person.Death = argument
+                    current_person.Alive = False
+                    death = False
+                elif married:
+                    current_family.Married = argument
+                    married = False
+                elif divorce:
+                    current_family.Divorced = argument
+                    divorce = False
+    return listOfPeople,listOfFamilies
 
+(listOfPeople,listOfFamilies)=gedComParse('Family-2-9-Sep-2018-247.ged')
 individuals = PrettyTable()
 individuals.field_names = ["ID","Name","Gender","Birthday","Age","Alive","Death","Child","Spouse"]
 for people in listOfPeople:
@@ -145,3 +149,4 @@ for family in listOfFamilies:
 
 
 print(families)
+
