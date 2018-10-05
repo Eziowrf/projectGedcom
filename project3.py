@@ -138,7 +138,9 @@ for people in listOfPeople:
     people.Birthday = FormatDate(people.Birthday)
     people.Age = computeAge(people.Birthday)
     people.Death = FormatDate(people.Death)
-    individuals.add_row([people.ID, people.Name, people.Gender, people.Birthday, people.Age, people.Alive, people.Death, people.Child.replace('@', ''), people.Spouse.replace('@', '')])
+    people.Child = people.Child.replace('@', '')
+    people.Spouse = people.Spouse.replace('@', '')
+    individuals.add_row([people.ID, people.Name, people.Gender, people.Birthday, people.Age, people.Alive, people.Death, people.Child, people.Spouse])
 
 print(individuals)
 
@@ -148,8 +150,9 @@ for family in listOfFamilies:
     family.ID = family.ID.replace('@', '')
     family.WifeID = family.WifeID.replace('@','')
     family.HusbandID = family.HusbandID.replace('@','')
+    family.Children = family.Children.replace('@', '')
     family.Married = FormatDate(family.Married)
-    families.add_row([family.ID, family.Married, family.Divorced, family.HusbandID.replace('@', ''), family.HusbandName, family.WifeID.replace('@', ''), family.WifeName, family.Children.replace('@', '')])
+    families.add_row([family.ID, family.Married, family.Divorced, family.HusbandID, family.HusbandName, family.WifeID, family.WifeName, family.Children])
 
 
 print(families)
