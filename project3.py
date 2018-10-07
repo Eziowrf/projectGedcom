@@ -157,5 +157,7 @@ for family in listOfFamilies:
 
 print(families)
 
+userStory01(listOfPeople, listOfFamilies)
+userStory02(listOfPeople, listOfFamilies)
 checkDeathvsBirth(listOfFamilies, listOfPeople)
 marriageAfter14(listOfFamilies, listOfPeople)
