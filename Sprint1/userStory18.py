@@ -18,7 +18,9 @@ def US_18(listOfPeople):
         #print(value)
         for i in value:
             if value.count(i)!=1:
+                print("Error! US18: in family"+" "+people.Child+" "+"has married their sibilings")
                 a= False
             else:
                 a= True
+    
     return a 
