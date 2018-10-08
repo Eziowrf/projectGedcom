@@ -1,3 +1,28 @@
++----+-----------------+--------+------------+------+-------+------------+-------+--------+
+| ID |       Name      | Gender |  Birthday  | Age  | Alive |   Death    | Child | Spouse |
++----+-----------------+--------+------------+------+-------+------------+-------+--------+
+| I1 |  Harry /Potter/ |   M    | 2969-12-02 | -952 |  True |     NA     |   F3  | F1,F2  |
+| I2 |   Lily /Evans/  |   F    | 2928-10-17 | -911 |  True |     NA     |   F5  | F3,F4  |
+| I3 |  James /Zhang/  |   M    | 1928-08-05 |  90  |  True |     NA     |   NA  |   F3   |
+| I4 | Ginny /Weasley/ |   F    | 1968-12-14 |  49  |  True |     NA     |   NA  |   F1   |
+| I5 |   Qiu /Zhang/   |   F    | 1968-02-03 |  50  | False | 2008-09-09 |   NA  |   F2   |
+| I6 |  James /Potter/ |   M    | 2016-09-12 |  2   |  True |     NA     |   F1  |   NA   |
+| I7 |  Albus /Potter/ |   M    | 2015-10-13 |  2   |  True |     NA     |   F1  |   NA   |
+| I8 |  Lily /Potter/  |   F    | 2014-12-10 |  3   |  True |     NA     |   F1  |   NA   |
+| I9 |  Michael /Fang/ |   M    | 2013-12-14 |  4   |  True |     NA     |   F2  |   NA   |
++----+-----------------+--------+------------+------+-------+------------+-------+--------+
++----+------------+----------+------------+----------------+---------+-----------------+----------+
+| ID |  Married   | Divorced | Husband ID |  Husband Name  | Wife ID |    Wife Name    | Children |
++----+------------+----------+------------+----------------+---------+-----------------+----------+
+| F1 | 2012-04-05 |    NA    |     I1     | Harry /Potter/ |    I4   | Ginny /Weasley/ | I6,I7,I8 |
+| F2 | 1988-02-03 |    NA    |     I1     | Harry /Potter/ |    I5   |   Qiu /Zhang/   |    I9    |
+| F3 | 1948-07-13 |    NA    |     I3     | James /Zhang/  |    I2   |   Lily /Evans/  |    I1    |
+| F4 |     NA     |    NA    |     NA     |       NA       |    I2   |   Lily /Evans/  |    NA    |
+| F5 |     NA     |    NA    |     NA     |       NA       |    NA   |        NA       |    I2    |
++----+------------+----------+------------+----------------+---------+-----------------+----------+
+ERROR: INDIVIDUAL: US01: I1: Birthday is after the current date
+ERROR: FAMILY: US02: F1: Husband's birthday occurs after Marriage date
+
 +-----+-----------+--------+------------+-----+-------+------------+-------+--------+
 |  ID |    Name   | Gender |  Birthday  | Age | Alive |   Death    | Child | Spouse |
 +-----+-----------+--------+------------+-----+-------+------------+-------+--------+
