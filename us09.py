@@ -1,6 +1,6 @@
 from compareAge import compareAge
 from addAge import addAge
-def checkDeathvsBirth(listOfFamilies, listOfPeople):
+def us_09(listOfFamilies, listOfPeople):
     children_birthdays = []
     father_deathday = []
     mother_deathday = []
