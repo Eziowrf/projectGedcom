@@ -2,6 +2,8 @@ import unittest
 import project3
 import userStory01
 import userStory02
+import userStory09
+import userStory10
 import userStory17
 import userStory18
 
@@ -21,6 +23,22 @@ class TestMethods(unittest.TestCase):
         condition2 = userStory02.userStory02(listOfPeople2, listOfFamilies2)
         self.assertEqual(condition1, False)
         self.assertEqual(condition2, True)
+
+    def test_us09(self):
+        (listOfPeople, listOfFamilies) = project3.gedComParse('US_09_test.ged')
+        condition1 = userStory09.us_09(listOfPeople, listOfFamilies)
+        (listOfPeople2, listOfFamilies2) = project3.gedComParse('My-Family-9-Sep-2018-162.ged')
+        condition2 = userStory09.us_09(listOfPeople2, listOfFamilies2)
+        self.assertFalse(condition1)
+        self.assertTrue(condition2)
+
+    def test_us10(self):
+        (listOfPeople, listOfFamilies) = project3.gedComParse('US_10_test.ged')
+        condition1 = userStory10.us_10(listOfPeople, listOfFamilies)
+        (listOfPeople2, listOfFamilies2) = project3.gedComParse('My-Family-9-Sep-2018-162.ged')
+        condition2 = userStory10.us_10(listOfPeople2, listOfFamilies2)
+        self.assertFalse(condition1)
+        self.assertTrue(condition2)
 
     def test_us17(self):
         (listOfPeople,listOfFamilies)= project3.gedComParse('US_17_test.ged')

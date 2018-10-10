@@ -3,8 +3,6 @@ from prettytable import PrettyTable
 import time
 from FormatDate import FormatDate
 from computeAge import computeAge
-from checkDeathvsBirth import checkDeathvsBirth
-from marriageAfter14 import marriageAfter14
 class Person:
     ID = "NA"
     Name = ""
@@ -159,5 +157,3 @@ print(families)
 
 userStory01(listOfPeople, listOfFamilies)
 userStory02(listOfPeople, listOfFamilies)
-checkDeathvsBirth(listOfFamilies, listOfPeople)
-marriageAfter14(listOfFamilies, listOfPeople)
