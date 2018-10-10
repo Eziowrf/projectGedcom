@@ -11,7 +11,6 @@ def US_17(listOfPeople):
             a= False
             if a==False:
                 print("ERROR: INDIVIDUAL: US17:"+people.ID+": "+"has married with child")
-                break
         else:
             #print("not in this line")
             a=True
