@@ -49,7 +49,7 @@ ERROR: FAMILY: US02: F1: Husband's birthday occurs after Marriage date
 | F4 |    NA   |    NA    |     I8     |   Gang /C/   |   I10   |  Jin /M/  |  I9,I11  |
 | F5 |    NA   |    NA    |    I13     |   Bim /K/    |   I10   |  Jin /M/  |   I12    |
 +----+---------+----------+------------+--------------+---------+-----------+----------+
-Error! US17:I2 has married with child
+ERROR: INDIVIDUAL: US17: I2: has married with child
 +-----+---------+--------+------------+-----+-------+-------+-------+--------+
 |  ID |   Name  | Gender |  Birthday  | Age | Alive | Death | Child | Spouse |
 +-----+---------+--------+------------+-----+-------+-------+-------+--------+
@@ -66,5 +66,4 @@ Error! US17:I2 has married with child
 | F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3,I4,I5 |
 | F2 |    NA   |    NA    |     I4     |    Child2    |    I5   |   Child3  |    NA    |
 +----+---------+----------+------------+--------------+---------+-----------+----------+
-Error! US18: in family F1 has married their sibilings
-Error! US18: in family F1 has married their sibilings
+ERROR: FAMILY: US18: in family F1 has married their sibilings
