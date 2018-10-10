@@ -1,6 +1,6 @@
 from compareAge import compareAge
 from addAge import addAge
-def marriageAfter14(listOfFamilies, listOfPeople):
+def us_10(listOfFamilies, listOfPeople):
     wife_birthday = []
     husband_birthday = []
     married = []
