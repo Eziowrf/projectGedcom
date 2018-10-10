@@ -10,7 +10,7 @@ def US_17(listOfPeople):
         if people.Child in sp:
             a= False
             if a==False:
-                print("Error: INDIVIDUAL: US17:"+people.ID+": "+"has married with child")
+                print("ERROR: INDIVIDUAL: US17:"+people.ID+": "+"has married with child")
                 break
         else:
             #print("not in this line")
