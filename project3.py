@@ -3,6 +3,7 @@ from prettytable import PrettyTable
 import time
 from FormatDate import FormatDate
 from computeAge import computeAge
+
 class Person:
     ID = "NA"
     Name = ""
@@ -127,33 +128,33 @@ def gedComParse(filename):
                     divorce = False
     return listOfPeople,listOfFamilies
 
-(listOfPeople,listOfFamilies)=gedComParse('Family-2-9-Sep-2018-247.ged')
-individuals = PrettyTable()
-individuals.field_names = ["ID","Name","Gender","Birthday","Age","Alive","Death","Child","Spouse"]
-for people in listOfPeople:
-    # better output:
-    people.ID = people.ID.replace('@', '')
-    people.Birthday = FormatDate(people.Birthday)
-    people.Age = computeAge(people.Birthday)
-    people.Death = FormatDate(people.Death)
-    people.Child = people.Child.replace('@', '')
-    people.Spouse = people.Spouse.replace('@', '')
-    individuals.add_row([people.ID, people.Name, people.Gender, people.Birthday, people.Age, people.Alive, people.Death, people.Child, people.Spouse])
-
-print(individuals)
-
-families = PrettyTable()
-families.field_names = ["ID","Married","Divorced","Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
-for family in listOfFamilies:
-    family.ID = family.ID.replace('@', '')
-    family.WifeID = family.WifeID.replace('@','')
-    family.HusbandID = family.HusbandID.replace('@','')
-    family.Children = family.Children.replace('@', '')
-    family.Married = FormatDate(family.Married)
-    families.add_row([family.ID, family.Married, family.Divorced, family.HusbandID, family.HusbandName, family.WifeID, family.WifeName, family.Children])
 
 
-print(families)
+def present(listOfPeople,listOfFamilies):
+    individuals = PrettyTable()
+    individuals.field_names = ["ID","Name","Gender","Birthday","Age","Alive","Death","Child","Spouse"]
+    for people in listOfPeople:
+        # better output:
+        people.ID = people.ID.replace('@', '')
+        people.Birthday = FormatDate(people.Birthday)
+        people.Age = computeAge(people.Birthday)
+        people.Death = FormatDate(people.Death)
+        people.Child = people.Child.replace('@', '')
+        people.Spouse = people.Spouse.replace('@', '')
+        individuals.add_row([people.ID, people.Name, people.Gender, people.Birthday, people.Age, people.Alive, people.Death, people.Child, people.Spouse])
 
-userStory01(listOfPeople, listOfFamilies)
-userStory02(listOfPeople, listOfFamilies)
+    print(individuals)
+
+    families = PrettyTable()
+    families.field_names = ["ID","Married","Divorced","Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
+    for family in listOfFamilies:
+        family.ID = family.ID.replace('@', '')
+        family.WifeID = family.WifeID.replace('@','')
+        family.HusbandID = family.HusbandID.replace('@','')
+        family.Children = family.Children.replace('@', '')
+        family.Married = FormatDate(family.Married)
+        families.add_row([family.ID, family.Married, family.Divorced, family.HusbandID, family.HusbandName, family.WifeID, family.WifeName, family.Children])
+
+
+    print(families)
+
