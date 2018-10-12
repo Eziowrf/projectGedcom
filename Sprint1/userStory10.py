@@ -16,8 +16,10 @@ def us_10(listOfFamilies, listOfPeople):
                 husband_birthday = people.Birthday
             if wife == people.ID:
                 wife_birthday = people.Birthday
-        husband_birthday = addAge(husband_birthday, '14-0-0')
-        wife_birthday = addAge(wife_birthday, '14-0-0')
+        if husband_birthday !="NA":
+            husband_birthday = addAge(husband_birthday, '14-0-0')
+        if wife_birthday !="NA":
+            wife_birthday = addAge(wife_birthday, '14-0-0')
 
         if married != "NA":
             if compareAge(husband_birthday, married):

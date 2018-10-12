@@ -1,5 +1,6 @@
 # Birth should occur before marriage of an individual
 def userStory02(listOfPeople, listOfFamilies):
+    flag=True
     def changeDateToNum(date):  # date format must be like "2018-10-06"
         if date == "NA":
             return 0  # 0 will not larger than any date
@@ -22,8 +23,8 @@ def userStory02(listOfPeople, listOfFamilies):
             BirthdayNumOfHusband = changeDateToNum(people_husband.Birthday)
             if BirthdayNumOfWife > MarriedNum:
                 print("ERROR: FAMILY: US02: " + family.ID + ": Wife's birthday occurs after Marriage date")
-                return False
+                flag= False
             if BirthdayNumOfHusband > MarriedNum:
                 print("ERROR: FAMILY: US02: " + family.ID + ": Husband's birthday occurs after Marriage date")
-                return False
-    return True
+                flag= False
+    return flag
