@@ -1,31 +1,10 @@
-import project3
-import userStory01
-import userStory02
-import userStory09
-import userStory10
-import userStory17
-import userStory18
+import userStory03
+import userStory04
 
-(listOfPeople,listOfFamilies)= project3.gedComParse('US_01_02_test.ged')
+(listOfPeople,listOfFamilies)= project3.gedComParse('error.ged')
 project3.present(listOfPeople,listOfFamilies)
-userStory01.userStory01(listOfPeople, listOfFamilies)
+# (listOfPeople1,listOfFamilies1)= project3.gedComParse('correct.ged')
+# project3.present(listOfPeople1,listOfFamilies1)
 
-(listOfPeople,listOfFamilies)= project3.gedComParse('US_01_02_test.ged')
-project3.present(listOfPeople,listOfFamilies)
-userStory02.userStory02(listOfPeople, listOfFamilies)
-
-(listOfPeople,listOfFamilies)= project3.gedComParse('US_09_test.ged')
-project3.present(listOfPeople,listOfFamilies)
-userStory09.us_09(listOfFamilies, listOfPeople)
-
-(listOfPeople,listOfFamilies)= project3.gedComParse('US_10_test.ged')
-project3.present(listOfPeople,listOfFamilies)
-userStory10.us_10(listOfFamilies, listOfPeople)
-
-(listOfPeople,listOfFamilies)= project3.gedComParse('US_17_test.ged')
-project3.present(listOfPeople,listOfFamilies)
-userStory17.US_17(listOfPeople)
-
-(listOfPeople,listOfFamilies)= project3.gedComParse('US_18_test.ged')
-project3.present(listOfPeople,listOfFamilies)
-userStory18.US_18(listOfPeople)
+userStory03.userStory03(listOfPeople)
+userStory04.userStory04(listOfFamilies)
