@@ -40,12 +40,12 @@ def us_19(listOfPeople,listOfFamily):
     
     for eachSpouse in listOfFamily:
         if eachSpouse.WifeID!="NA" and eachSpouse.HusbandID!="NA":
-            result=determin(grandparentMap[eachSpouse.WifeID],grandparentMap[eachSpouse.HusbandID])
-            if result==True:
+            resultOfGrand=determin(grandparentMap[eachSpouse.WifeID],grandparentMap[eachSpouse.HusbandID])
+            resultOfParent=determin(parentMap[eachSpouse.WifeID],parentMap[eachSpouse.HusbandID])
+            if resultOfGrand==True and resultOfParent==False:
                 print("ERROR: FAMILY: US19: In family"+" "+eachSpouse.ID+" "+"has married their Cousins")
                 flag=False
 
-    print(flag)
     return flag
 
 def determin(list1, list2): 
@@ -62,6 +62,12 @@ def determin(list1, list2):
                 return result  
                 
     return result 
+
+
+
+
+
+    
 
 
 
