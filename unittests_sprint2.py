@@ -13,7 +13,7 @@ class TestMethods(unittest.TestCase):
         condition1 = userStory03.userStory03(listOfPeople)
         (listOfPeople2, listOfFamilies2) = main.gedComParse('correct.ged')
         condition2 = userStory03.userStory03(listOfPeople2)
-        self.assertEqual(condition1, True)
+        self.assertEqual(condition1, False)
         self.assertEqual(condition2, True)
 
     def test_us04(self):
@@ -21,7 +21,7 @@ class TestMethods(unittest.TestCase):
         condition1 = userStory04.userStory04(listOfFamilies)
         (listOfPeople2, listOfFamilies2) = main.gedComParse('correct.ged')
         condition2 = userStory04.userStory04(listOfFamilies2)
-        self.assertEqual(condition1, True)
+        self.assertEqual(condition1, False)
         self.assertEqual(condition2, True)
         
     def test_us11(self):
@@ -48,7 +48,7 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(condition1, False)
         self.assertEqual(condition2, True)
         
-    def test_us20(self):
+    def test_us27(self):
         (listOfPeople,listOfFamilies)= main.gedComParse('error.ged')
         condition1 = userStory20.us_20(listOfPeople,listOfFamilies)
         (listOfPeople2,listOfFamilies2)= main.gedComParse('correct.ged')
@@ -56,6 +56,13 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(condition1, False)
         self.assertEqual(condition2, True)
 
+    def test_us20(self):
+        (listOfPeople,listOfFamilies)= main.gedComParse('error.ged')
+        condition1 = userStory20.us_20(listOfPeople,listOfFamilies)
+        (listOfPeople2,listOfFamilies2)= main.gedComParse('correct.ged')
+        condition2 = userStory20.us_20(listOfPeople2,listOfFamilies2)
+        self.assertEqual(condition1, False)
+        self.assertEqual(condition2, True)
 
 if __name__ == "__main__":
     unittest.main()
