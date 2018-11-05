@@ -28,4 +28,3 @@ def us_11(listOfFamilies):
                             print("ERROR: FAMILY: US11: Spouse married twice at the same time in families " + family.ID + " and " + family2.ID)
                             falg = False
     return flag
-                            
