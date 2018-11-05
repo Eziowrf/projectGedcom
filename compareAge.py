@@ -14,5 +14,3 @@ def compareAge(date1, date2):
                 return True
     else:
         return False
-    
-            

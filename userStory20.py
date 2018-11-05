@@ -45,7 +45,6 @@ def us_20(listOfPeople,listOfFamily):
                 print("ERROR: FAMILY: US19: In family"+" "+eachSpouse.ID+" "+"has married between aunt and uncle with nieces and nephews")
                 flag=False
 
-    print(flag)
     return flag
 
 def determin(list1, list2): 
