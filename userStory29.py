@@ -1,9 +1,9 @@
 #Made by Mark Watson
 
 #prints a list of dead people
-def us_29(listOfPeople, listOfFamilies):
+def us_29(listOfPeople):
 
-    deathList = {}
+    deathList = [] 
     for people in listOfPeople:
         if people.Alive != True:
             deathList.append(people.Name)
