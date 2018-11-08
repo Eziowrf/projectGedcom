@@ -61,6 +61,6 @@ userStory13.us_13(listOfFamilies3, listOfPeople3)
 userStory14.us_14(listOfFamilies3, listOfPeople3)
 userStory21.us_21(listOfPeople3, listOfFamilies3)
 userStory22.us_22(listOfPeople3, listOfFamilies3)
-userStory29.us_29(listOfPeople)
-userStory30.us_30(listOfPeople)
+userStory29.us_29(listOfPeople3)
+userStory30.us_30(listOfPeople3)
 
