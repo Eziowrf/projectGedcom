@@ -8,4 +8,4 @@ def us_29(listOfPeople):
         if people.Alive != True:
             deathList.append(people.Name)
 
-    print(deathList)
+    print("List:  Married people who Alive: "+str(marriedList))
