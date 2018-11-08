@@ -10,4 +10,4 @@ def us_30(listOfPeople):
 
             marriedList.append(people.Name)
 
-    print(marriedList)
+    print("List:  Unfortunately, these people are passed away :  "+str(deathList))
