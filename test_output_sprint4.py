@@ -12,6 +12,8 @@ import userStory11
 import userStory12
 import userStory13
 import userStory14
+import userStory15
+import userStory16
 
 import userStory17
 import userStory18
@@ -74,7 +76,8 @@ userStory22.us_22(listOfPeople3, listOfFamilies3)
 # userStory29.us_29(listOfPeople3)
 # userStory30.us_30(listOfPeople3)
 
-
+userStory15.us_15(listOfFamilies4)
+userStory16.us_16(listOfFamilies4, listOfPeople4)
 userStory23.us_23(listOfPeople4, listOfFamilies4)
 userStory24.us_24(listOfPeople4, listOfFamilies4)
 

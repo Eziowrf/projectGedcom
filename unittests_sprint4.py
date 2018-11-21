@@ -20,6 +20,8 @@ import userStory19
 import userStory20
 import userStory25
 import userStory26
+import userStory15
+import userStory16
 import userStory23
 import userStory24
 class TestMethods(unittest.TestCase):
@@ -124,6 +126,22 @@ class TestMethods(unittest.TestCase):
        condition1 = userStory22.us_22(listOfPeople,listOfFamilies)
        (listOfPeople2,listOfFamilies2)= main.gedComParse('correct3.ged')
        condition2 = userStory22.us_22(listOfPeople2,listOfFamilies2)
+       self.assertEqual(condition1, False)
+       self.assertEqual(condition2, True)
+
+    def test_us15(self):
+       (listOfPeople,listOfFamilies)= main.gedComParse('error4.ged')
+       condition1 = userStory15.us_15(listOfFamilies)
+       (listOfPeople2,listOfFamilies2)= main.gedComParse('correct4.ged')
+       condition2 = userStory15.us_15(listOfFamilies2)
+       self.assertEqual(condition1, False)
+       self.assertEqual(condition2, True)
+    
+    def test_us16(self):
+       (listOfPeople,listOfFamilies)= main.gedComParse('error4.ged')
+       condition1 = userStory16.us_16(listOfFamilies,listOfPeople)
+       (listOfPeople2,listOfFamilies2)= main.gedComParse('correct4.ged')
+       condition2 = userStory16.us_16(listOfFamilies2,listOfPeople2)
        self.assertEqual(condition1, False)
        self.assertEqual(condition2, True)
 
