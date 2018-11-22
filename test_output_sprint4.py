@@ -30,14 +30,14 @@ import userStory29
 import userStory30
 
 
-# import userStory07
-# import userStory08
-# import userStory15
-# import userStory16
+import userStory07
+import userStory08
+import userStory15
+import userStory16
 import userStory23
 import userStory24
-# import userStory31
-# import userStory32
+import userStory31
+import userStory32
 
 (listOfPeople,listOfFamilies)= main.gedComParse('correct2.ged')
 (listOfPeople2,listOfFamilies2)= main.gedComParse('correct2.ged')
@@ -80,5 +80,8 @@ userStory15.us_15(listOfFamilies4)
 userStory16.us_16(listOfFamilies4, listOfPeople4)
 userStory23.us_23(listOfPeople4, listOfFamilies4)
 userStory24.us_24(listOfPeople4, listOfFamilies4)
-
+userStory07.userStory07(listOfPeople4)
+userStory08.userStory08(listOfPeople4, listOfFamilies4)
+userStory31.us_31(listOfPeople4)
+userStory32.us_32(listOfPeople4, listOfFamilies4)
 

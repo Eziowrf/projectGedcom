@@ -1,7 +1,7 @@
 #Made by Mark Watson
 
 #List all multiple births in a GEDCOM file (twins, triplets, etc.)
-def us_32(listOfPeople, ListOfFamilies):
+def us_32(listOfPeople, listOfFamilies):
 
 
     listOfTwins = []
@@ -40,6 +40,6 @@ def us_32(listOfPeople, ListOfFamilies):
 
         #removes duplicate IDs from list
         listOfTwins = list(set(listOfTwins))
+    print("LIST: US32: People who have same birthday: "+str(listOfTwins))
 
-
-    return listOfTwins
+    return True

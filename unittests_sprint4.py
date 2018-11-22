@@ -2,6 +2,8 @@ import unittest
 import main
 import userStory01
 import userStory02
+import userStory07
+import userStory08
 import userStory09
 import userStory10
 import userStory17
@@ -24,6 +26,8 @@ import userStory15
 import userStory16
 import userStory23
 import userStory24
+import userStory31
+import userStory32
 class TestMethods(unittest.TestCase):
     def test_us03(self):
         (listOfPeople, listOfFamilies) = main.gedComParse('error2.ged')
@@ -159,6 +163,38 @@ class TestMethods(unittest.TestCase):
        (listOfPeople2,listOfFamilies2)= main.gedComParse('correct4.ged')
        condition2 = userStory24.us_24(listOfPeople2,listOfFamilies2)
        self.assertEqual(condition1, False)
+       self.assertEqual(condition2, True)
+
+    def test_us07(self):
+        (listOfPeople, listOfFamilies) = main.gedComParse('error4.ged')
+        condition1 = userStory07.userStory07(listOfPeople)
+        (listOfPeople2, listOfFamilies2) = main.gedComParse('correct4.ged')
+        condition2 = userStory07.userStory07(listOfPeople2)
+        self.assertEqual(condition1, False)
+        self.assertEqual(condition2, True)
+
+    def test_us08(self):
+        (listOfPeople, listOfFamilies) = main.gedComParse('error4.ged')
+        condition1 = userStory08.userStory08(listOfPeople, listOfFamilies)
+        (listOfPeople2, listOfFamilies2) = main.gedComParse('correct4.ged')
+        condition2 = userStory08.userStory08(listOfPeople2, listOfFamilies2)
+        self.assertEqual(condition1, False)
+        self.assertEqual(condition2, True)
+
+    def test_us31(self):
+       (listOfPeople,listOfFamilies)= main.gedComParse('error4.ged')
+       condition1 = userStory31.us_31(listOfPeople)
+       (listOfPeople2,listOfFamilies2)= main.gedComParse('correct4.ged')
+       condition2 = userStory31.us_31(listOfPeople2)
+       self.assertEqual(condition1, True)
+       self.assertEqual(condition2, True)
+    
+    def test_us32(self):
+       (listOfPeople,listOfFamilies)= main.gedComParse('error4.ged')
+       condition1 = userStory32.us_32(listOfPeople,listOfFamilies)
+       (listOfPeople2,listOfFamilies2)= main.gedComParse('correct4.ged')
+       condition2 = userStory32.us_32(listOfPeople2,listOfFamilies2)
+       self.assertEqual(condition1, True)
        self.assertEqual(condition2, True)
 
 if __name__ == "__main__":

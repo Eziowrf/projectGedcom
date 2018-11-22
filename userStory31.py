@@ -10,4 +10,6 @@ def us_31(listOfPeople):
 
             singleList.append(people.Name)
 
-    print("This is a list of living people over 30 who have not married: " +str(singleList))
+    print("LIST: US31: People who's age over 30 and not married : " +str(singleList))
+
+    return True
